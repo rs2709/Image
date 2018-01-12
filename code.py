@@ -12,7 +12,7 @@ import sys
 
 
 filepath = "NFPAdataset"
-outputpath = "ouputImages"
+outputpath = "outputImages"
 outputlabel = "outputLabels"
 for filename in glob.glob(os.path.join(filepath,'*.txt')):
 	f = open(filename,"r")
@@ -40,10 +40,9 @@ for filename in glob.glob(os.path.join(filepath,'*.txt')):
 		ymax = (int)((s1*(2*y+h))/2)
 		ymin = (int)((s1*(2*y-h))/2)
 		img = cv.rectangle(img,(xmin,ymin),(xmax,ymax),(0,0,255),4)
-		
 		bndbox = [xmin,ymin,xmax,ymax]
 		writer.addBndBox(bndbox[0], bndbox[1], bndbox[2], bndbox[3], 0, 0)
 	
 	writer.save(targetFile = imgFileName[:len(imgFileName)-4] + ".xml")
-	cv.imwrite(outputpath + filename[:len(filename)-4] + ".jpg",img)
+	cv.imwrite(outputpath + "\\" +imgFileName[:len(imgFileName)-4] + ".jpg",img)
 	
